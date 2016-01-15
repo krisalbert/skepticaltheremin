@@ -1,12 +1,21 @@
 var React = require('react');
-var helpers = require('../utils/helpers');
-//var FacebookButton = require('./FacebookButton.jsx');
 
-var Login = React.createClass({
-  getInitialState: function() {
+var FacebookButton = React.createClass({
+   // constructor(props) {
+   //    super(props);
+
+   //    this.FB = props.fb;
+
+   //    this.state = {
+   //       message: ""
+   //    };
+
+   // },
+
+   getInitialState: function() {
     return {
-      username: '',
-      name: ''
+      message: 'Hello',
+      username: ''
     };
   },
 
@@ -53,19 +62,11 @@ var Login = React.createClass({
     FB.api('/me', function(response) {
     console.log('Successful login for: ' + response.name);
     console.log('Successful login for: ' + response.id);
-    this.handleUsernameChange(response).
+    this.setState({username: response.id});
     document.getElementById('status').innerHTML =
       'Thanks for logging in, ' + response.name + '!';
-    }.bind(this));
+    });
   },
-
-  handleUsernameChange: function(user) {
-    console.log("in handle user", user);
-    this.setState({username: user.id, name: user.name });
-    window.localStorage.setItem('username', user.id);
-    window.localStorage.setItem('name', user.name);
-  },
-
 
   // This is called with the results from from FB.getLoginStatus().
   statusChangeCallback: function(response) {
@@ -104,19 +105,41 @@ var Login = React.createClass({
     console.log("Hello");
   },
 
-  render: function(){
-    return(
-      <div>
-         <h2>Log In with Facebook</h2>
-          <div>
+  //  componentDidMount() {
+  //     this.FB.Event.subscribe('auth.logout', 
+  //        this.onLogout.bind(this));
+  //     this.FB.Event.subscribe('auth.statusChange', 
+  //        this.onStatusChange.bind(this));
+  //  },
+      
+  //  onStatusChange(response) {
+  //     console.log( response );
+  //     var self = this;
+
+  //     if( response.status === "connected" ) {
+  //        this.FB.api('/me', function(response) {
+  //           var message = "Welcome " + response.name;
+  //           self.setState({
+  //              message: message
+  //           });
+  //        })
+  //     }
+  //  },
+
+  //  onLogout(response) {
+  //     this.setState({
+  //        message: ""
+  //     });
+  //  },
+
+   render() {
+      return (
+         <div>
             <a href="#" onClick={this.handleClick}>
             LOG IN!</a>
          </div>
-      </div>
-
-    )
-  }
+      );
+   }
 });
 
-module.exports = Login;
-
+module.exports = FacebookButton;

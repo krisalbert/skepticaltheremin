@@ -25,7 +25,7 @@ var Signup = React.createClass({
   render: function(){
     return(
       <div>
-         <h2>Sign up</h2>
+         <h2>Log in with Facebook</h2>
          <form  onSubmit={this.signup} >
            <div>
              <label htmlFor="username">Username:</label>

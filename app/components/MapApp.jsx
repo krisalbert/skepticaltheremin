@@ -6,7 +6,7 @@ var CurrentLocation = require('./CurrentLocation.jsx');
 var LocationList = require('./LocationList.jsx');
 var SearchUser = require('./SearchUser.jsx');
 var helpers = require('../utils/helpers');
-var Signup = require('./Signup.jsx');
+var Login = require('./Login.jsx');
 
 
 var MapApp = React.createClass({
@@ -139,7 +139,7 @@ var MapApp = React.createClass({
 
       );
     } else {
-      return <Signup loginUser={this.loginUser}/>
+      return <Login loginUser={this.loginUser}/>
     }
   }
 
